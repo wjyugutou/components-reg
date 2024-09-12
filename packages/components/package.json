@@ -1,0 +1,19 @@
+{
+  "name": "@yugutou/comps-components",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@vitest/coverage-v8": "^2.0.5",
+    "@vue/test-utils": "^2.4.6",
+    "async-validator": "^4.2.5",
+    "jsdom": "^25.0.0"
+  }
+}
