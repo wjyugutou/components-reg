@@ -10,7 +10,7 @@
     "dev": "pnpm --filter @yugutou/comps-play dev --open",
     "docs:dev": "pnpm --filter @yugutou/comps-docs dev --open",
     "docs:build": "pnpm --filter @yugutou/comps-docs build ",
-    "test": "echo "
+    "test": "echo 'todo'"
   },
   "dependencies": {
     "@yugutou/comps": "workspace:*",
