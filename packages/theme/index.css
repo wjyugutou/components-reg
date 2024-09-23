@@ -1,1 +1,69 @@
-@import './reset.css';
+@import url('./reset.css');
+
+:root {
+  /* colors */
+  --y-color-white: #fff;
+  --y-color-black: #000;
+  --colors: (primary: #409eff, success: #67c23a, warning: #e6a23c, danger: #f56c6c, info: #909399);
+  --y-bg-color: #fff;
+  --y-bg-color-page: #f2f3f5;
+  --y-bg-color-overlay: #fff;
+  --y-text-color-primary: #303133;
+  --y-text-color-regular: #606266;
+  --y-text-color-secondary: #909399;
+  --y-text-color-placeholder: #a8abb2;
+  --y-text-color-disabled: #c0c4cc;
+  --y-border-color: #dcdfe6;
+  --y-border-color-light: #e4e7ed;
+  --y-border-color-lighter: #ebeef5;
+  --y-border-color-extra-light: #f2f6fc;
+  --y-border-color-dark: #d4d7de;
+  --y-border-color-darker: #cdd0d6;
+  --y-fill-color: #f0f2f5;
+  --y-fill-color-light: #f5f7fa;
+  --y-fill-color-lighter: #fafafa;
+  --y-fill-color-extra-light: #fafcff;
+  --y-fill-color-dark: #ebedf0;
+  --y-fill-color-darker: #e6e8eb;
+  --y-fill-color-blank: #fff;
+
+  @each $val, $color in var(--colors) {
+    --y-color-$(val): $(color);
+
+    @for $i from 3 to 9 {
+      --y-color-$(val)-light-$(i): mix(#fff, $(color), 0.$(i));
+    }
+
+    --y-color-$(val)-dark-2: mix(#000, $(color), 0.2);
+  }
+
+  /* border */
+  --y-border-width: 1px;
+  --y-border-style: solid;
+  --y-border-color-hover: var(--y-text-color-disabled);
+  --y-border: var(--y-border-width) var(--y-border-style) var(--y-border-color);
+  --y-border-radius-base: 4px;
+  --y-border-radius-small: 2px;
+  --y-border-radius-round: 20px;
+  --y-border-radius-circle: 100%;
+
+  /* font */
+  --y-font-size-extra-large: 20px;
+  --y-font-size-large: 18px;
+  --y-font-size-medium: 16px;
+  --y-font-size-base: 14px;
+  --y-font-size-small: 13px;
+  --y-font-size-extra-small: 12px;
+  --y-font-family: 'Helvetica Neue', helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1', arial, sans-serif;
+  --y-font-weight-primary: 500;
+
+  /* disabled */
+  --y-disabled-bg-color: var(--y-fill-color-light);
+  --y-disabled-text-color: var(--y-text-color-placeholder);
+  --y-disabled-border-color: var(--y-border-color-light);
+
+  /* animation */
+  --y-transition-duration: 0.4s;
+  --y-transition-duration-fast: 0.2s;
+}

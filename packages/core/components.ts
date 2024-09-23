@@ -1,5 +1,5 @@
-import { YButton } from '@yugutou/comps-components'
 import type { Plugin } from 'vue'
+import { YButton } from '@yugutou/comps-components'
 
 export default [
   YButton,

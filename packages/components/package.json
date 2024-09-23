@@ -7,7 +7,7 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest --coverage"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.8",
