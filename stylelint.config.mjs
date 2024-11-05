@@ -1,4 +1,11 @@
 export default {
   extends: '@yugutou/stylelint-config',
-  customSyntax: 'postcss-lit',
+  rules: {
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: ['@each', '@for', 'each', 'for'],
+      },
+    ],
+  },
 }

@@ -1,4 +1,4 @@
-import type { Component, Ref } from 'vue'
+import type { Component, ShallowRef } from 'vue'
 
 export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 export type NativeType = 'submit' | 'reset' | 'button'
@@ -21,10 +21,22 @@ export interface ButtonProps {
   throttleDuration?: number
 }
 
+export interface ButtonGroupProps {
+  size?: ButtonSize
+  type?: ButtonType
+  disabled?: boolean
+}
+
+export interface ButtonGroupContext {
+  size?: ButtonSize
+  type?: ButtonType
+  disabled?: boolean
+}
+
 export interface ButtonEmits {
   (e: 'click', value: MouseEvent): void
 }
 
 export interface ButtonInstance {
-  ref: Ref<HTMLButtonElement | void>
+  ref: Readonly<ShallowRef<HTMLButtonElement | null>>
 }

@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'Yugutou-UI',
+  title: 'yugutou-ui',
   description: 'yuutou的elementPlus',
   // 防止样式加载不出来
   base: '/yugutou-ui/',

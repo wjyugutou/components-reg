@@ -92,6 +92,11 @@
     width: 1em;
     height: 1em;
   }
+
+  /* 有icon时显示间距 */
+  & [class*=y-icon]+span {
+    margin-left: 4px;
+  }
 }
 
 @each $val in primary, success, warning, info, danger {

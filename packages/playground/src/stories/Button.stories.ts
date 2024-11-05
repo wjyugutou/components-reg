@@ -1,12 +1,13 @@
 import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
 import { expect, fn, userEvent, within } from '@storybook/test'
-import { YButton } from '@yugutou/comps'
+import { YButton, YButtonGroup } from 'yugutou-ui'
 
-type Story = StoryObj<typeof YButton> & { argTypes: ArgTypes }
+type Story = StoryObj<typeof YButton> & { argTypes?: ArgTypes }
 
 const meta: Meta<typeof YButton> = {
   title: 'Example/Button',
   component: YButton,
+  tags: ['autodocs'],
   argTypes: {
     type: {
       control: { type: 'select' },
@@ -53,11 +54,12 @@ const meta: Meta<typeof YButton> = {
 
 function container(val: string) {
   return `<div style="margin: 5px;">
-  ${val}
-</div>`
+            ${val}
+          </div>
+        `
 }
 
-export const Default: Story & { args: { content: string } } = {
+export const Default: Story = {
   argTypes: {
     content: {
       control: { type: 'text' },
@@ -83,5 +85,50 @@ export const Default: Story & { args: { content: string } } = {
     expect(args.onClick).toHaveBeenCalled()
   },
 }
+
+export const Circle: Story = {
+  args: {
+    icon: 'search',
+    type: 'primary',
+  },
+  render: args => ({
+    components: { YButton },
+    setup() {
+      return { args }
+    },
+    template: container(`
+      <YButton circle v-bind="args"/>
+    `),
+  }),
+  play: async ({ canvasElement, args, step }) => {
+    const canvas = within(canvasElement)
+    await step('click button', async () => {
+      await userEvent.click(canvas.getByRole('button'))
+    })
+
+    expect(args.onClick).toHaveBeenCalled()
+  },
+}
+
+export const Group: Story = {
+  args: {
+    type: 'primary',
+  },
+  render: args => ({
+    components: { YButtonGroup, YButton },
+    setup() {
+      return { args }
+    },
+    template: container(`
+      <YButtonGroup v-bind="args">
+        <YButton>Button 1</YButton>
+        <YButton>Button 2</YButton>
+        <YButton>Button 3</YButton>
+      </YButtonGroup>
+    `),
+  }),
+}
+
+Circle.parameters = {}
 
 export default meta

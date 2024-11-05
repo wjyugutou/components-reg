@@ -1,5 +1,5 @@
 {
-  "name": "@yugutou/comps",
+  "name": "yugutou-ui",
   "version": "1.0.0",
   "description": "",
   "author": "",
@@ -10,6 +10,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@yugutou/comps-components": "workspace:*"
+    "@yugutou-ui/components": "workspace:*"
   }
 }

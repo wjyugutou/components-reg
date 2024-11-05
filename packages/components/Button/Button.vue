@@ -1,36 +1,45 @@
 <script lang='ts' setup>
-import type { ButtonEmits, ButtonInstance, ButtonProps } from './types.ts'
+import type { ButtonEmits, ButtonGroupContext, ButtonInstance, ButtonProps } from './types.ts'
 import { throttle } from 'lodash-es'
-import { computed, useTemplateRef } from 'vue'
+import { computed, inject, useTemplateRef } from 'vue'
+import { YIcon } from 'yugutou-ui'
+import { BUTTON_GROUP_CTX_KEY } from './constants.ts'
 
 defineOptions({
   name: 'YButton',
 })
 
-const {
-  size = 'default',
-  nativeType = 'button',
-  tag = 'button',
-  type = 'info',
-  disabled = false,
-  plain = false,
-  round = false,
-  loading = false,
-  circle = false,
-  throttled = false,
-  throttleDuration = 1000,
-} = defineProps<ButtonProps>()
+const props = withDefaults(defineProps<ButtonProps>(), {
+  size: 'default',
+  nativeType: 'button',
+  tag: 'button',
+  type: 'info',
+  throttleDuration: 1000,
+})
 
 const emit = defineEmits<ButtonEmits>()
 
 const slots = defineSlots()
 
+const btnGroupCtx = inject<ButtonGroupContext>(BUTTON_GROUP_CTX_KEY)
+
 const _ref = useTemplateRef<HTMLButtonElement>('button')
 
-const handleClick = (e: MouseEvent) => emit('click', e)
-const handleClickThrottled = throttle(handleClick, throttleDuration)
+const size = computed(() => btnGroupCtx ? btnGroupCtx.size : props.size)
+const type = computed(() => btnGroupCtx ? btnGroupCtx.type : props.type)
+const disabled = computed(() => (btnGroupCtx ? btnGroupCtx.disabled : props.disabled) || false)
 
-const clickFunc = computed(() => throttled ? handleClickThrottled : handleClick)
+const handleClick = (e: MouseEvent) => emit('click', e)
+const handleClickThrottled = throttle(handleClick, props.throttleDuration)
+
+function clickFunc(e: MouseEvent) {
+  if (props.throttled) {
+    handleClickThrottled(e)
+  }
+  else {
+    handleClick(e)
+  }
+}
 
 defineExpose<ButtonInstance>({
   ref: _ref,
@@ -52,13 +61,26 @@ defineExpose<ButtonInstance>({
       'is-round': round,
       'is-circle': circle,
     }"
-    :disabled="disabled || !!loading"
+    :autofocus="autofocus"
+    :disabled="disabled || loading ? true : undefined"
     @click="clickFunc"
   >
-    <slot />
+    <template v-if="loading">
+      <slot name="loading">
+        <YIcon class="loading-icon" :icon="loadingIcon ?? 'spinner'" spin size="1x" />
+      </slot>
+    </template>
+
+    <YIcon v-if="icon && !loading" :icon="icon" size="1x" />
+
+    <template v-if="!circle && slots.default">
+      <span>
+        <slot />
+      </span>
+    </template>
   </component>
 </template>
 
 <style>
-@import './style.css';
+@import url('./style.css');
 </style>

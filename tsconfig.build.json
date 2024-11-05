@@ -6,27 +6,34 @@
     "jsxImportSource": "vue",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "useDefineForClassFields": true,
+
+    "baseUrl": "./",
     "module": "ESNext",
 
     /* Bundler mode */
     "moduleResolution": "bundler",
+    "paths": {
+      "@eric-ui/components": ["./packages/components"]
+    },
     "resolveJsonModule": true,
+    "types": ["node"],
     "allowImportingTsExtensions": true,
-
     /* Linting */
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noEmit": true,
+    "removeComments": true,
     "isolatedModules": true,
     "skipLibCheck": true
   },
   "include": [
     "env.d.ts",
-    "packages/**/*.ts",
-    "packages/**/*.tsx",
-    "packages/**/*.vue",
-    "packages/playground/src/stories/*.stories.ts", "vitest.config.ts"
-  ]
+    "packages/core/index.ts",
+    "packages/composables/**/*.ts",
+    "packages/utils/**/*.ts",
+    "packages/components/**/*.ts"
+  ],
+  "exclude": ["packages/components/vitest.config.ts", "packages/components/index.test.ts"]
 }

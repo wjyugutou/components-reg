@@ -1,5 +1,5 @@
-import YugutouUI from '@yugutou/comps'
 import { createApp } from 'vue'
+import YugutouUI from 'yugutou-ui'
 import App from './App.vue'
 
 createApp(App)

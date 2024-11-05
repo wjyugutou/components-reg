@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "Yugutou-UI"
+  name: "yugutou-ui"
   text: "yuutou的elementPlus"
   tagline: My great project tagline
   actions:

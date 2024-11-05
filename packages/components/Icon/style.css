@@ -1,0 +1,19 @@
+.y-icon {
+  --er-icon-color: inherit;
+
+  display: inline-flex;
+  position: relative;
+  font-size: inherit;
+  color: var(--er-icon-color);
+  justify-content: center;
+  align-items: center;
+  fill: currentcolor;
+}
+
+@each $val in primary, info, success, warning, danger {
+  .y-icon--$(val) {
+    /* stylelint-disable-next-line custom-property-pattern */
+    --er-icon-color: var(--y-color-$(val));
+  }
+}
+ 
