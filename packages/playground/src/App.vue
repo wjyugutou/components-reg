@@ -9,10 +9,12 @@ function handleClickBtn() {
 
 <template>
   <YButton size="default" type="primary" icon="search" plain @click="handleClickBtn">
-    <span v-if="text">button</span>
+    <span v-show="text">button</span>
   </YButton>
 
-  <YButton size="default" type="primary" icon="search" circle />
+  <YButton size="default" type="primary" icon="search">
+    asdsa
+  </YButton>
 </template>
 
 <style scoped>

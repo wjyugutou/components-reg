@@ -8,10 +8,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "pnpm --filter @yugutou-ui/playground dev --open",
+    "build": "pnpm --filter yugutou-ui build",
     "storybook": "pnpm --filter @yugutou-ui/playground storybook",
     "docs:dev": "pnpm --filter @yugutou-ui/docs dev --open",
-    "docs:build": "pnpm --filter @yugutou-ui/docs build ",
-    "test": "pnpm --filter @yugutou-ui/components test "
+    "docs:build": "pnpm --filter @yugutou-ui/docs build",
+    "test": "pnpm --filter @yugutou-ui/components test"
   },
   "dependencies": {
     "@yugutou-ui/components": "workspace:*",
@@ -27,12 +28,16 @@
     "@fortawesome/fontawesome-svg-core": "6.6.0",
     "@fortawesome/free-solid-svg-icons": "6.6.0",
     "@fortawesome/vue-fontawesome": "3.0.8",
+    "@popperjs/core": "^2.11.8",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.9.0",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vitejs/plugin-vue-jsx": "^4.0.1",
     "@vue/tsconfig": "^0.5.1",
+    "async-validator": "^4.2.5",
     "eslint": "^9.14.0",
+    "move-file-cli": "^3.0.0",
+    "npm-run-all": "^4.1.5",
     "postcss-color-mix": "^1.1.0",
     "postcss-each": "^1.1.0",
     "postcss-each-variables": "^0.3.0",

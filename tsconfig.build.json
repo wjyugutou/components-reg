@@ -33,7 +33,9 @@
     "packages/core/index.ts",
     "packages/composables/**/*.ts",
     "packages/utils/**/*.ts",
-    "packages/components/**/*.ts"
+    "packages/components/**/*.ts",
+    "packages/components/index.ts",
+    "packages/components/**/*.vue"
   ],
   "exclude": ["packages/components/vitest.config.ts", "packages/components/index.test.ts"]
 }
