@@ -8,6 +8,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "pnpm --filter @yugutou-ui/playground dev --open",
+    "release": "pnpm --filter yugutou-ui release",
     "build": "pnpm --filter yugutou-ui build",
     "storybook": "pnpm --filter @yugutou-ui/playground storybook",
     "docs:dev": "pnpm --filter @yugutou-ui/docs dev --open",
