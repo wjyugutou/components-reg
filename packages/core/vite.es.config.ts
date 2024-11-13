@@ -1,27 +1,17 @@
+import { readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
+// 生成.d.ts 文件
 import dts from 'vite-plugin-dts'
 
-const COMP_NAMES = [
-  'Alert',
-  'Button',
-  'Collapse',
-  'Dropdown',
-  'Form',
-  'Icon',
-  'Input',
-  'Loading',
-  'Message',
-  'MessageBox',
-  'Notification',
-  'Overlay',
-  'Popconfirm',
-  'Select',
-  'Switch',
-  'Tooltip',
-  'Upload',
-] as const
+function generatorComponents(basePath: string) {
+  const entries = readdirSync(basePath, { withFileTypes: true })
+
+  return entries
+    .filter(entry => entry.isDirectory())
+    .map(entry => entry.name)
+}
 
 export default defineConfig({
   plugins: [
@@ -29,9 +19,11 @@ export default defineConfig({
     dts({
       tsconfigPath: '../../tsconfig.build.json',
       outDir: 'dist/types',
+
     }),
   ],
   build: {
+    emptyOutDir: true,
     outDir: 'dist/es',
     lib: {
       entry: resolve(__dirname, './index.ts'),
@@ -61,7 +53,7 @@ export default defineConfig({
           if (id.includes('/packages/composables')) {
             return 'composables'
           }
-          for (const comName of COMP_NAMES) {
+          for (const comName of generatorComponents('../components')) {
             if (id.includes(`/packages/components/${comName}`)) {
               return comName
             }

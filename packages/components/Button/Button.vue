@@ -2,7 +2,7 @@
 import type { ButtonEmits, ButtonGroupContext, ButtonInstance, ButtonProps } from './types.ts'
 import { throttle } from 'lodash-es'
 import { computed, inject, useTemplateRef } from 'vue'
-import { YIcon } from 'yugutou-ui'
+import { YIcon } from '../Icon'
 import { BUTTON_GROUP_CTX_KEY } from './constants.ts'
 
 defineOptions({

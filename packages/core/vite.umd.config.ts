@@ -7,6 +7,7 @@ export default defineConfig({
     vue(),
   ],
   build: {
+    emptyOutDir: true,
     outDir: 'dist/umd',
     lib: {
       entry: resolve(__dirname, './index.ts'),
