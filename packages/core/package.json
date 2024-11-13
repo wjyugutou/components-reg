@@ -1,7 +1,7 @@
 {
   "name": "yugutou-ui",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "yugutou-ui copy ElementPlus, vue3 + TS",
   "author": "",
   "license": "ISC",
